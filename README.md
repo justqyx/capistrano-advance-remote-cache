@@ -20,13 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-In your Capfile
-
-```ruby
-require 'capistrano/recipes/deploy/strategy/advance_remote_cache'
-```
-
-In your deploy.rb
+In your `config/deploy.rb` of Rails app
 
 ```ruby
 set :deploy_via, :advance_remote_cache
