@@ -25,10 +25,21 @@ module Capistrano
 
         def update_repository_cache
           logger.trace "updating the cached checkout on all servers"
-          command = "if [ -d #{repository_cache} ]; then " +
-            "#{source.sync(revision, repository_cache)}; " +
+
+          # command = "if [ -d #{repository_cache} ]; then " +
+          #   "#{source.sync(revision, repository_cache)}; " +
+          #   "else #{source.checkout(revision, repository_cache)}; fi"
+          # scm_run command
+
+          command = "if [ -d ]; then " +
+            "cd #{repository_cache} && " +
+            "git remote update --prune && " +
+            "git fetch -v #{source.origin} #{revision} && " +
+            "git reset --hard #{revision} && " +
+            "git clean -d -x -f; " +
             "else #{source.checkout(revision, repository_cache)}; fi"
-          scm_run command
+
+          scm_run(command)
         end
 
         def copy_repository_cache
