@@ -33,7 +33,7 @@ module Capistrano
 
         def copy_repository_cache
           logger.trace "copying the cached version to #{configuration[:release_path]}"
-          run "git archive #{revision} #{repository_cache} | tar -x -f - -C #{configuration[:release_path]} && #{mark}"
+          run "cd #{repository_cache} && git archive #{revision} | tar -x -f - -C #{configuration[:release_path]} && #{mark}"
         end
 
       end
