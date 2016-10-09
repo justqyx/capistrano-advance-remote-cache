@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-advance-remote-cache"
-  spec.version       = "0.0.3"
+  spec.version       = "0.0.4"
   spec.authors       = ["Yuanxin Qiu"]
   spec.email         = ["hzuqiuyuanxin@gmail.com"]
 
