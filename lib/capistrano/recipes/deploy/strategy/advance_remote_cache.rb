@@ -31,7 +31,7 @@ module Capistrano
           #   "else #{source.checkout(revision, repository_cache)}; fi"
           # scm_run command
 
-          command = "if [ -d ]; then " +
+          command = "if [ -d #{repository_cache} ]; then " +
             "cd #{repository_cache} && " +
             "git remote update --prune && " +
             "git fetch -v #{source.origin} #{revision} && " +
